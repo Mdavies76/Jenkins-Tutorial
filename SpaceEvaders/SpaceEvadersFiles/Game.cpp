@@ -174,18 +174,18 @@ bool Game::Initialize()
 	//create audio
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	//load sounds 
-	soundEffect = Mix_LoadWAV("C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\arcadeExplosion.wav");
+	soundEffect = Mix_LoadWAV("C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\arcadeExplosion.wav");
 	//load background music
-	mMusic = Mix_LoadMUS("C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\CelesteScatteredAndLost.wav");
+	mMusic = Mix_LoadMUS("C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\CelesteScatteredAndLost.wav");
 	//Play the music
 	Mix_PlayMusic(mMusic, 0);
 
 	//Create the title screen
-	createTitleScreen("C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\titlePage.png", 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+	createTitleScreen("C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\titlePage.png", 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 	SDL_Delay(5000);
 
 	//Create player sprite
-	mPlayerImage = "C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\spaceship.png";
+	mPlayerImage = "C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\spaceship.png";
 	mSurface = IMG_Load(mPlayerImage.c_str());
 	playerTexture = SDL_CreateTextureFromSurface(mRenderer, mSurface);
 	SDL_FreeSurface(mSurface);
@@ -197,7 +197,7 @@ bool Game::Initialize()
 	//Create meteor sprites
 	for (int i = 0; i < maxMeteors; i++) {
 		meteors[i] = new Meteor();
-		meteors[i]->setImage("C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\meteor.png");
+		meteors[i]->setImage("C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\meteor.png");
 		mSurface = IMG_Load(meteors[i]->getImage().c_str());
 		meteors[i]->setTexture(SDL_CreateTextureFromSurface(mRenderer, mSurface));
 		SDL_FreeSurface(mSurface);
@@ -235,13 +235,13 @@ bool Game::Initialize()
 	//Create Score label
 	scoreColour = { 0, 100, 255 };
 	scoreText = "Score: 0";
-	scoreFont = TTF_OpenFont("C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\scoreFont.ttf", 16);
+	scoreFont = TTF_OpenFont("C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\scoreFont.ttf", 16);
 	mSurface = TTF_RenderText_Solid(scoreFont, scoreText.c_str(), scoreColour);
 	scoreTexture = SDL_CreateTextureFromSurface(mRenderer, mSurface);
 	SDL_FreeSurface(mSurface);
 
 	//set up highscore file
-	highScoreSaver.open("C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\highscore.txt", std::ios::in);
+	highScoreSaver.open("C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\highscore.txt", std::ios::in);
 	highScoreSaver >> highScore;	//read the previous score from the file
 	highScoreSaver.close();
 
@@ -437,7 +437,7 @@ void Game::UpdateGame()
 			Mix_PauseMusic();
 			Mix_PlayChannel(-1, soundEffect, 0);
 			//show game over screen for 5 seconds
-			createTitleScreen("C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\gameOver.png", (WINDOW_WIDTH / 2) - (WINDOW_WIDTH / 8),	//centered in the window
+			createTitleScreen("C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\gameOver.png", (WINDOW_WIDTH / 2) - (WINDOW_WIDTH / 8),	//centered in the window
 											(WINDOW_HEIGHT / 2) - (WINDOW_HEIGHT / 8), 
 											WINDOW_WIDTH / 4, 
 											WINDOW_HEIGHT / 4);
@@ -446,7 +446,7 @@ void Game::UpdateGame()
 			mIsRunning = false;
 			//check if most recent score was higher than previous record
 			if (timeScore > highScore) {
-				highScoreSaver.open("C:\\Users\\davie\\OneDrive\\Documents\\SCHOOL\\Fall 2022\\Game Development\\SpaceEvaders\\SpaceEvadersFiles\\highscore.txt", std::ios::out);
+				highScoreSaver.open("C:\\Users\\davie\\OneDrive\\Documents\\Jenkins-Tutorial\\SpaceEvaders\\SpaceEvadersFiles\\highscore.txt", std::ios::out);
 				highScoreSaver << timeScore;	//write the score to the .txt file if so
 				highScoreSaver.close();
 			}
