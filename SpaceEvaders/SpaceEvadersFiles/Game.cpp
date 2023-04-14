@@ -367,7 +367,7 @@ void Game::UpdateGame()
 	float deltaTime = (SDL_GetTicks() - mTicksCount) / 1000.0f;
 	
 	// Clamp maximum delta time value
-	if (deltaTime > 0.05f){//jenkins change test.should be 0.05
+	if (deltaTime > 0.051f){//jenkins change test.should be 0.05
 		deltaTime = 0.05f;
 	}
 
